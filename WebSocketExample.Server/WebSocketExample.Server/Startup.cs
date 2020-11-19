@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Net.WebSockets;
+
 
 namespace WebSocketExample.Server
 {
@@ -21,19 +23,18 @@ namespace WebSocketExample.Server
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+            app.UseWebSockets();
+            app.Use(async (context, next) =>
             {
-                app.UseDeveloperExceptionPage();
-            }
-
-            app.UseRouting();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapGet("/", async context =>
+                if (context.WebSockets.IsWebSocketRequest)
                 {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+                    WebSocket webSocket = await context.WebSockets.AcceptWebSocketAsync();
+                    Console.WriteLine("WebSocket Connected.");
+                }
+                else
+                {
+                    await next();
+                }
             });
         }
     }

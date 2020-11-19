@@ -6,8 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSocketExample.Server", "WebSocketExample.Server\WebSocketExample.Server.csproj", "{55F6156E-E18E-4860-B263-B46E9EAD8E78}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebSocketServer", "WebSocketServer", "{2FEE84E9-64E5-47D6-AB58-D52816D55209}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebSocketClient", "WebSocketClient", "{6203AD30-8CAD-4E79-B5C9-CFD02DDEF34D}"
 	ProjectSection(SolutionItems) = preProject
 		WebSocketClient.html = WebSocketClient.html
 	EndProjectSection
