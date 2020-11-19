@@ -37,5 +37,11 @@ namespace WebSocketExample.Server
                 }
             });
         }
+        public void WriteRequestParam(HttpContext context)
+        {
+            Console.WriteLine("Request Method :"+context.Request.Method);
+            Console.WriteLine("Request Protocol :" + context.Request.Protocol);
+
+        }
     }
 }
