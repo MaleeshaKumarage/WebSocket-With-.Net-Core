@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "FuHo4vZNVaFmtoEmrGqAEH+nyGoG1GnOIh4ievUV/23BBJyP42ApMhGJIDIuHM5wH2SzwzmG85AxxT7vqgYk1A==",
+  "dgSpecHash": "BUeohyju3XR5GWX4kAgWWlSEOe/eusud4u2JC6Y20g5Fo5c0whtcJIiOpwkSPd6PBem7vg6zFQNSfz1WHHAmKw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Maleesha\\Source\\Repos\\MaleeshaKumarage\\WebSocket-With-.Net-Core\\WebSocketExample.Server\\WebSocketExample.Server\\WebSocketExample.Server.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Maleesha\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
   "logs": []
 }
