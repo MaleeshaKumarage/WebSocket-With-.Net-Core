@@ -75,6 +75,7 @@
                     '<td>Client</td>'+
                     '<td>'+htmlEscape(event.data)+'</td>'+
                     '</tr>';
+                    isConnId(event.data);
                 };
         };
 
@@ -100,6 +101,15 @@
                     '</tr>';
                   sendMessage.value="";  
         }
+
+        function isConnId(str){
+            if(str.substring(0,8)=="ConnID :"){
+                ConnID.innerHTML=str;
+            }
+
+        }
+
+
 
         function htmlEscape(str){
             return str.toString()
