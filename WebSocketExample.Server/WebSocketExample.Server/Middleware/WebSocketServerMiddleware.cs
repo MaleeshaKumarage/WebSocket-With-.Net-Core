@@ -12,6 +12,7 @@ namespace WebSocketExample.Server.Middleware
     public class WebSocketServerMiddleware
     {
         private readonly RequestDelegate _next;
+        private readonly WebSocketServerConnectionManager _manager = new WebSocketServerConnectionManager();
 
         public WebSocketServerMiddleware(RequestDelegate next)
         {
@@ -24,12 +25,14 @@ namespace WebSocketExample.Server.Middleware
             {
                 WebSocket webSocket = await context.WebSockets.AcceptWebSocketAsync();
                 Console.WriteLine("WebSocket Connected.");
+
+                string ConnId = _manager.AddSocket(webSocket);
                 await ReceiveMessage(webSocket, async (result, buffer) =>
                 {
                     if (result.MessageType == WebSocketMessageType.Text)
                     {
                         Console.WriteLine("Message Recived");
-                        Console.WriteLine($"Message : { Encoding.UTF8.GetString(buffer,0,result.Count)}");
+                        Console.WriteLine($"Message : { Encoding.UTF8.GetString(buffer, 0, result.Count)}");
                         return;
                     }
                     else if (result.MessageType == WebSocketMessageType.Close)
