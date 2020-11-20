@@ -8,7 +8,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Net.WebSockets;
-
+using System.Threading;
+using WebSocketExample.Server.Middleware;
 
 namespace WebSocketExample.Server
 {
@@ -24,24 +25,8 @@ namespace WebSocketExample.Server
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseWebSockets();
-            app.Use(async (context, next) =>
-            {
-                if (context.WebSockets.IsWebSocketRequest)
-                {
-                    WebSocket webSocket = await context.WebSockets.AcceptWebSocketAsync();
-                    Console.WriteLine("WebSocket Connected.");
-                }
-                else
-                {
-                    await next();
-                }
-            });
+            app.UseWebSocketServer();
         }
-        public void WriteRequestParam(HttpContext context)
-        {
-            Console.WriteLine("Request Method :"+context.Request.Method);
-            Console.WriteLine("Request Protocol :" + context.Request.Protocol);
-
-        }
+       
     }
 }
